@@ -1,19 +1,15 @@
-require 'pry'
 class MP3Importer
-  attr_accessor :path, :files
+  attr_accessor :path
   
   def initialize(path)
-    @path = path
+    @path = path 
   end 
-  
+ 
   def files 
     Dir.entries(@path).reject {|f| !f.include?(".mp3")}
-   
-   end 
-  
-  def import
-    
-    files.each {|filename| Song.new_by_filename(filename)}
   end 
   
-end 
+  def import 
+    files.each {|file| Song.new_by_filename(file)}
+  end 
+end   
